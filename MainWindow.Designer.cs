@@ -94,7 +94,6 @@
             this.serviceUrl.Name = "serviceUrl";
             this.serviceUrl.Size = new System.Drawing.Size(145, 20);
             this.serviceUrl.TabIndex = 2;
-            this.serviceUrl.Text = "ovh.com";
             // 
             // label1
             // 
@@ -138,7 +137,7 @@
             this.groupBox2.Size = new System.Drawing.Size(251, 101);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Profil";
+            this.groupBox2.Text = "Compte";
             // 
             // password
             // 

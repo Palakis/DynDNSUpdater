@@ -63,9 +63,29 @@ namespace DynDNSUpdater.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Icon semblable à (Icône).
         /// </summary>
-        internal static System.Drawing.Icon icone {
+        internal static System.Drawing.Icon GreenIcon {
             get {
-                object obj = ResourceManager.GetObject("icone", resourceCulture);
+                object obj = ResourceManager.GetObject("GreenIcon", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Icon semblable à (Icône).
+        /// </summary>
+        internal static System.Drawing.Icon NormalIcon {
+            get {
+                object obj = ResourceManager.GetObject("NormalIcon", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Icon semblable à (Icône).
+        /// </summary>
+        internal static System.Drawing.Icon RedIcon {
+            get {
+                object obj = ResourceManager.GetObject("RedIcon", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
             }
         }

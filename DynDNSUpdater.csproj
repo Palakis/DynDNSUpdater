@@ -33,7 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Chromatix-Aerial-Web.ico</ApplicationIcon>
+    <ApplicationIcon>NormalIcon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -88,6 +88,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Chromatix-Aerial-Web.ico" />
+    <None Include="NormalIcon.ico" />
+    <None Include="GreenIcon.ico" />
+    <None Include="RedIcon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

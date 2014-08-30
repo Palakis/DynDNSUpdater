@@ -20,7 +20,7 @@ namespace DynDNSUpdater
         {
             InitializeComponent();
             updater = new BackgroundUpdater();
-            trayIcon.Icon = Properties.Resources.icone;
+            trayIcon.Icon = Properties.Resources.NormalIcon;
             trayIcon.ContextMenu = new ContextMenu();
             trayIcon.ContextMenu.MenuItems.Add(0, new MenuItem("Restaurer", new EventHandler(MenuRestore)));
             trayIcon.ContextMenu.MenuItems.Add(1, new MenuItem("Quitter", new EventHandler(MenuExit)));
@@ -36,6 +36,20 @@ namespace DynDNSUpdater
             updater.Username = Properties.Settings.Default.Username;
             updater.Password = Properties.Settings.Default.Password;
             updater.UpdateInterval = (int)Properties.Settings.Default.UpdateInterval;
+
+            updater.ErrorCallback = new EventHandler(this.ErrorCallback);
+            updater.SuccessCallback = new EventHandler(this.SuccessCallback);
+        }
+
+        private void ErrorCallback(object sender, EventArgs e)
+        {
+            trayIcon.Icon = Properties.Resources.RedIcon;
+            trayIcon.ShowBalloonTip(500, "Impossible d'effectuer la mise à jour", updater.LastErrorMessage, ToolTipIcon.Error);
+        }
+
+        private void SuccessCallback(object sender, EventArgs e)
+        {
+            trayIcon.Icon = Properties.Resources.GreenIcon;
         }
 
         private void MenuRestore(object sender, EventArgs e)
