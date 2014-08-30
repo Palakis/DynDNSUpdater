@@ -28,13 +28,13 @@ namespace DynDNSUpdater
             serviceUrl.Text = Properties.Settings.Default.ServiceURL;
             domain.Text = Properties.Settings.Default.Domain;
             username.Text = Properties.Settings.Default.Username;
-            password.Text = Properties.Settings.Default.Password;
+            password.Text = FromBase64(Properties.Settings.Default.Password);
             updateInterval.Value = Properties.Settings.Default.UpdateInterval;
 
             updater.ServiceUrl = Properties.Settings.Default.ServiceURL;
             updater.Domain = Properties.Settings.Default.Domain;
             updater.Username = Properties.Settings.Default.Username;
-            updater.Password = Properties.Settings.Default.Password;
+            updater.Password = FromBase64(Properties.Settings.Default.Password);
             updater.UpdateInterval = (int)Properties.Settings.Default.UpdateInterval;
 
             updater.ErrorCallback = new EventHandler(this.ErrorCallback);
@@ -73,7 +73,7 @@ namespace DynDNSUpdater
             Properties.Settings.Default.ServiceURL = serviceUrl.Text;
             Properties.Settings.Default.Domain = domain.Text;
             Properties.Settings.Default.Username = username.Text;
-            Properties.Settings.Default.Password = password.Text;
+            Properties.Settings.Default.Password = ToBase64(password.Text);
             Properties.Settings.Default.UpdateInterval = updateInterval.Value;
             Properties.Settings.Default.Save();
 
@@ -112,6 +112,16 @@ namespace DynDNSUpdater
         private void trayIcon_DoubleClick(object sender, EventArgs e)
         {
             Show();
+        }
+
+        private string FromBase64(string input)
+        {
+            return System.Text.Encoding.UTF8.GetString(System.Convert.FromBase64String(input));
+        }
+
+        private string ToBase64(string input)
+        {
+            return System.Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes(input));
         }
     }
 }
