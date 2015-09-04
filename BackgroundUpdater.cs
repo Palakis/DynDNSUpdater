@@ -78,7 +78,7 @@ namespace DynDNSUpdater
 
         private string getPublicIPAddress()
         {
-            string addr = httpGet("http://icanhazip.com");
+            string addr = httpGet("http://ipv4.icanhazip.com");
             return addr.Replace("\n", "");
         }
 
