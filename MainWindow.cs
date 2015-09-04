@@ -15,10 +15,14 @@ namespace DynDNSUpdater
     public partial class MainWindow : Form
     {
         private BackgroundUpdater updater;
+        private bool errorNotified;
 
         public MainWindow()
         {
             InitializeComponent();
+
+            errorNotified = false;
+
             updater = new BackgroundUpdater();
             trayIcon.Icon = Properties.Resources.NormalIcon;
             trayIcon.ContextMenu = new ContextMenu();
@@ -43,12 +47,17 @@ namespace DynDNSUpdater
 
         private void ErrorCallback(object sender, EventArgs e)
         {
-            trayIcon.Icon = Properties.Resources.RedIcon;
-            trayIcon.ShowBalloonTip(500, "Impossible d'effectuer la mise à jour", updater.LastErrorMessage, ToolTipIcon.Error);
+            if (!errorNotified)
+            {
+                trayIcon.Icon = Properties.Resources.RedIcon;
+                trayIcon.ShowBalloonTip(500, "Impossible d'effectuer la mise à jour", updater.LastErrorMessage, ToolTipIcon.Error);
+                errorNotified = true;
+            }
         }
 
         private void SuccessCallback(object sender, EventArgs e)
         {
+            errorNotified = false;
             trayIcon.Icon = Properties.Resources.GreenIcon;
         }
 
@@ -82,6 +91,7 @@ namespace DynDNSUpdater
                 updater.Start();
             }
 
+            errorNotified = false;
             Hide();
         }
 
